@@ -8,8 +8,8 @@ const schema = new Schema({
 })
 
  interface Ifoto extends Document {
-    title: string ;
-    imagePath: string;
+    email: string,
+    password: string
 }
 
-export default model<Ifoto>('Foto', schema);
+export default model<Ifoto>('Admin', schema);

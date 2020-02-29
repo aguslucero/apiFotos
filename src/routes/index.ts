@@ -3,6 +3,7 @@ import multer from '../libs/multer';
 import multer2 from '../libs/multer2';
 import * as fotoCrontroller from '../controllers/foto.controller'
 import * as menuController from '../controllers/menu.controller'
+import * as authController from '../controllers/auth.controller'
 const router = Router();
 
 router.route('/fotos')
@@ -23,6 +24,7 @@ router.route('/fotos/:id')
   .delete(menuController.deleteMenu)
   .put(menuController.actualizarMenu)
 
-  router.route('/auth/login').post( )
+  router.route('/auth/register').post(authController.createAdmin)
+  router.route('/auth/login').post(authController.login);
 
 export default router

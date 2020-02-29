@@ -6,7 +6,7 @@ const schema = new Schema({
     description: String,
     price: Number
 
-
+      
 })
 
  interface Imenu extends Document {
