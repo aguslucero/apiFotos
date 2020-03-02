@@ -29,3 +29,15 @@ export async function login(req: Request, res: Response): Promise<Response> {
         });
          
       };
+
+export async function isLoged(req: Request, res: Response): Promise<Response> {
+  const token = req.body.token;
+  jwt.verify(token, SECRET_KEY, function(err, decoded){
+    if (err){
+      return res.json(false);
+    } 
+    
+  });
+  return res.json(true);
+
+}

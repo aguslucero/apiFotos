@@ -4,3 +4,4 @@ package-lock.json
 /front/package-lock.json
 /public/*
 /uploads/*
+/dist/*
