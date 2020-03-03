@@ -8,3 +8,4 @@ const schema = new mongoose_1.Schema({
     price: Number
 });
 exports.default = mongoose_1.model('Menu', schema);
+//# sourceMappingURL=menu.js.map

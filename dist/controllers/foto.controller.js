@@ -54,3 +54,4 @@ async function actualizar(req, res) {
     });
 }
 exports.actualizar = actualizar;
+//# sourceMappingURL=foto.controller.js.map

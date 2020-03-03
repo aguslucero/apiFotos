@@ -56,3 +56,4 @@ async function actualizarMenu(req, res) {
     });
 }
 exports.actualizarMenu = actualizarMenu;
+//# sourceMappingURL=menu.controller.js.map

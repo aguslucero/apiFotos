@@ -21,3 +21,4 @@ app.use('/api', index_1.default);
 app.use('/uploads', express_1.default.static(path_1.default.resolve('uploads')));
 app.use('/uploads2', express_1.default.static(path_1.default.resolve('uploads2')));
 exports.default = app;
+//# sourceMappingURL=app.js.map

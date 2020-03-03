@@ -27,5 +27,7 @@ router.route('/fotos/:id')
   router.route('/auth/register').post(authController.createAdmin)
   router.route('/auth/login').post(authController.login);
   router.route('/auth/isLoged').post(authController.isLoged);
+  router.route('/itsActived').get(authController.itsActived);
+  router.route('/activeOrDesactive').get(authController.ActiveOrDesactive);
 
 export default router

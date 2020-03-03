@@ -7,9 +7,9 @@ const schema = new Schema({
     password: String
 })
 
- interface Ifoto extends Document {
+ interface Iadmin extends Document {
     email: string,
     password: string
 }
 
-export default model<Ifoto>('Admin', schema);
+export default model<Iadmin>('Admin', schema);

@@ -5,4 +5,5 @@ const schema = new mongoose_1.Schema({
     email: String,
     password: String
 });
-exports.default = mongoose_1.model('Foto', schema);
+exports.default = mongoose_1.model('Admin', schema);
+//# sourceMappingURL=admin.js.map

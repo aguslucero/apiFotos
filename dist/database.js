@@ -12,3 +12,4 @@ async function startConnecion() {
     console.log('base de datos conectada');
 }
 exports.startConnecion = startConnecion;
+//# sourceMappingURL=database.js.map

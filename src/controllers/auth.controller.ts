@@ -2,6 +2,7 @@ import { Request, Response, json} from 'express'
 import * as jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt'
 import Admin from '../models/admin';
+import ItsActived from '../models/itsActived';
 
 const SECRET_KEY = 'secretkey12345'
 
@@ -40,4 +41,35 @@ export async function isLoged(req: Request, res: Response): Promise<Response> {
   });
   return res.json(true);
 
+}
+
+export async function itsActived(req: Request, res: Response): Promise<Response> {
+   const verify = await ItsActived.findOne();
+   if ( verify ) { 
+      if(verify.actived) { 
+        return res.json(true);
+      }
+      return res.json(false);
+   }  
+   return res.json(false) }
+
+
+export async function ActiveOrDesactive(req: Request, res: Response): Promise<Response> {
+ let verify = await ItsActived.findOne();
+ if (!verify) {
+   let newItsActive = new ItsActived()
+   newItsActive.actived = true; 
+   await newItsActive.save();
+   verify = newItsActive
+   return res.json(verify);
+ } 
+ if ( verify.actived) {
+   verify.actived = false,
+   verify.save();
+   res.json(verify);
+ } else {
+   verify.actived = true, 
+   verify.save();
+   res.json(verify)
+ } 
 }
