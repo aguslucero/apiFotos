@@ -16,6 +16,7 @@ const multer2_1 = __importDefault(require("../libs/multer2"));
 const fotoCrontroller = __importStar(require("../controllers/foto.controller"));
 const menuController = __importStar(require("../controllers/menu.controller"));
 const authController = __importStar(require("../controllers/auth.controller"));
+const reservaController = __importStar(require("../controllers/reservas.controller"));
 const router = express_1.Router();
 router.route('/fotos')
     .get(fotoCrontroller.getFotos)
@@ -31,10 +32,18 @@ router.route('/menus/:id')
     .get(menuController.getMenu)
     .delete(menuController.deleteMenu)
     .put(menuController.actualizarMenu);
+//auth
 router.route('/auth/register').post(authController.createAdmin);
 router.route('/auth/login').post(authController.login);
 router.route('/auth/isLoged').post(authController.isLoged);
+//pedidos
 router.route('/itsActived').get(authController.itsActived);
 router.route('/activeOrDesactive').get(authController.ActiveOrDesactive);
+router.route('/pedidos/newPedido').post(reservaController.newPedido);
+router.route('/pedidos/getPedidos').get(reservaController.getPedidos);
+router.route('/pedidos/getPendings').get(reservaController.getPendings);
+router.route('/pedidos/getReady').get(reservaController.getReady);
+router.route('/pedidos/changeState').post(reservaController.changeState);
+router.route('/pedidos/delivered').post(reservaController.delivered);
 exports.default = router;
 //# sourceMappingURL=index.js.map

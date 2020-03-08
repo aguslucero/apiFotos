@@ -4,6 +4,7 @@ import multer2 from '../libs/multer2';
 import * as fotoCrontroller from '../controllers/foto.controller'
 import * as menuController from '../controllers/menu.controller'
 import * as authController from '../controllers/auth.controller'
+import * as reservaController from '../controllers/reservas.controller'
 const router = Router();
 
 router.route('/fotos')
@@ -24,10 +25,18 @@ router.route('/fotos/:id')
   .delete(menuController.deleteMenu)
   .put(menuController.actualizarMenu)
 
+  //auth
   router.route('/auth/register').post(authController.createAdmin)
   router.route('/auth/login').post(authController.login);
   router.route('/auth/isLoged').post(authController.isLoged);
+  
+  //pedidos
   router.route('/itsActived').get(authController.itsActived);
   router.route('/activeOrDesactive').get(authController.ActiveOrDesactive);
-
+  router.route('/pedidos/newPedido').post(reservaController.newPedido);
+  router.route('/pedidos/getPedidos').get(reservaController.getPedidos);
+  router.route('/pedidos/getPendings').get(reservaController.getPendings);
+  router.route('/pedidos/getReady').get(reservaController.getReady);
+  router.route('/pedidos/changeState').post(reservaController.changeState);
+  router.route('/pedidos/delivered').post(reservaController.delivered);
 export default router
