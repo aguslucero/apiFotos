@@ -1,6 +1,8 @@
 import { Request, Response, json} from 'express'
 import moment = require('moment');
 import Pedido from '../models/pedido'
+import WorkableDay from '../models/workableDay'
+import Reserva from '../models/reserva'
 
 
 export async function crearReserva(req: Request, res: Response) { 
@@ -47,4 +49,60 @@ export async function delivered(req: Request, res: Response): Promise<Response>{
     pedido.state = 'entregado';
     pedido.save();
     return res.json(pedido);
+}
+
+export async function createWorkableDay(req: Request, res: Response): Promise<Response>{
+    const workableday = new WorkableDay(req.body.workableday);
+    workableday.save();
+    return res.json(workableday);
+}
+
+export async function getWorkableDays(req: Request, res: Response): Promise<Response>{
+ const workableDay = await WorkableDay.find();
+ return res.json(workableDay);
+}
+
+export async function getTablesFoyDay(req: Request, res: Response): Promise<Response>{ 
+  let availableHours = [];
+   const hours = ['11', '12', '13', '14', '20', '21', '22']
+   for(let element of hours) {
+    let tables = 40;
+    const reservas = await Reserva.find({dia: req.params.date}).find({hora: element})
+    reservas.forEach( reserva => 
+    tables = tables - +reserva.personas )
+    if (tables > 0) {
+        const availables = new Availables(element, tables)
+        availableHours.push(availables)
+    }
+   }
+   
+   return res.json(availableHours);
+
+
+}
+
+export async function createReserva(req: Request, res: Response): Promise<Response>{ 
+const reserva = new Reserva(req.body.reserva);
+let tables = 40;
+    const reservas = await Reserva.find({dia: reserva.dia}).find({hora: reserva.hora})
+    reservas.forEach( data => 
+    tables = tables - +data.personas );
+    tables = tables - +reserva.personas;
+    if (tables > 0) {
+       reserva.save();
+       return res.json(reserva);
+    }
+       return res.json(false);
+
+}
+
+
+export class Availables {
+    hour: string;
+    tables: number
+
+    constructor(hour: string, tables:number){
+        this.hour = hour;
+        this.tables = tables
+    }
 }

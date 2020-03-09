@@ -43,4 +43,11 @@ router.route('/fotos/:id')
 
   //notificacion
   router.route('/nofication/sendEmail').post(notificacionController.sendEmail)
+
+  // reservas
+
+  router.route('/reserva/createWorkableDay').post(reservaController.createWorkableDay)
+  router.route('/reserva/getWorkableDays').get(reservaController.getWorkableDays)
+  router.route('/reserva/tablesFoyDay/:date').get(reservaController.getTablesFoyDay)
+  router.route('/reserva/createReserva').post(reservaController.createReserva)
 export default router

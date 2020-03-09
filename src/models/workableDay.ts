@@ -5,13 +5,20 @@ const workableDaySchema = new Schema({
     number: Number,
     startHour: Number,
     finishHour: Number,
-})
+    breakStart: Number,
+    breakFinish: Number,
+    tables: Number
+    })
+
 
 interface IworkableDaySchema extends Document {
     name: string,
     number: number,
     startHour: number,
     finishHour: number,
+    breakStart: number,
+    breakFinish: number,
+    tables: number
 
 }
 

@@ -48,5 +48,10 @@ router.route('/pedidos/changeState').post(reservaController.changeState);
 router.route('/pedidos/delivered').post(reservaController.delivered);
 //notificacion
 router.route('/nofication/sendEmail').post(notificacionController.sendEmail);
+// reservas
+router.route('/reserva/createWorkableDay').post(reservaController.createWorkableDay);
+router.route('/reserva/getWorkableDays').get(reservaController.getWorkableDays);
+router.route('/reserva/tablesFoyDay/:date').get(reservaController.getTablesFoyDay);
+router.route('/reserva/createReserva').post(reservaController.createReserva);
 exports.default = router;
 //# sourceMappingURL=index.js.map
