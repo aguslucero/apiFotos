@@ -43,7 +43,7 @@ export async function changeState(req: Request, res: Response): Promise<Response
 }
 
 export async function delivered(req: Request, res: Response): Promise<Response>{ 
-    const pedido = await Pedido.findById(req.body.id)
+    const pedido = await Pedido.findById(req.body.id);
     pedido.state = 'entregado';
     pedido.save();
     return res.json(pedido);

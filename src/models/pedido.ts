@@ -10,7 +10,8 @@ const schema = new Schema({
     phone: String,
     title: String,
     description: String,
-    state: String
+    state: String,
+    email: String
     
 })
 
@@ -23,6 +24,7 @@ const schema = new Schema({
     title: string,
     description: string,
     state: string
+    email: string;
 }
 
-export default model<Ipedido>('pedido', schema);
+export default model<Ipedido>('pedidos', schema);
