@@ -5,6 +5,7 @@ import * as fotoCrontroller from '../controllers/foto.controller'
 import * as menuController from '../controllers/menu.controller'
 import * as authController from '../controllers/auth.controller'
 import * as reservaController from '../controllers/reservas.controller'
+import * as notificacionController from '../controllers/notification.controller'
 const router = Router();
 
 router.route('/fotos')
@@ -39,4 +40,7 @@ router.route('/fotos/:id')
   router.route('/pedidos/getReady').get(reservaController.getReady);
   router.route('/pedidos/changeState').post(reservaController.changeState);
   router.route('/pedidos/delivered').post(reservaController.delivered);
+
+  //notificacion
+  router.route('/nofication/sendEmail').post(notificacionController.sendEmail)
 export default router
