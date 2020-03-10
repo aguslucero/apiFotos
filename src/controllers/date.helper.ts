@@ -3,7 +3,7 @@ import moment = require('moment');
 export class DateHelper {
     static  isAfterThanToday(date): boolean {
         const momentDate = moment(date, 'DD-MM-YYYY');
-        const todayDate = moment();
+        const todayDate = moment().subtract(1, 'days');
         return momentDate.isAfter(todayDate);
     }
   

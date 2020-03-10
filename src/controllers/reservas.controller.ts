@@ -1,8 +1,10 @@
+import { DateHelper } from './date.helper';
 import { Request, Response, json} from 'express'
 import moment = require('moment');
 import Pedido from '../models/pedido'
 import WorkableDay from '../models/workableDay'
 import Reserva from '../models/reserva'
+
 
 
 export async function crearReserva(req: Request, res: Response) { 
@@ -63,6 +65,9 @@ export async function getWorkableDays(req: Request, res: Response): Promise<Resp
 }
 
 export async function getTablesFoyDay(req: Request, res: Response): Promise<Response>{ 
+if (!DateHelper.isAfterThanToday(req.params.date)){
+    return res.json(false)
+}
   let availableHours = [];
    const hours = ['11', '12', '13', '14', '20', '21', '22']
    for(let element of hours) {
@@ -70,7 +75,7 @@ export async function getTablesFoyDay(req: Request, res: Response): Promise<Resp
     const reservas = await Reserva.find({dia: req.params.date}).find({hora: element})
     reservas.forEach( reserva => 
     tables = tables - +reserva.personas )
-    if (tables > 0) {
+    if (tables > 0 ) {
         const availables = new Availables(element, tables)
         availableHours.push(availables)
     }
@@ -95,6 +100,16 @@ let tables = 40;
        return res.json(false);
 
 }
+
+export async function deleteReserva(req: Request, res: Response): Promise<Response>{ 
+    const reserva = await Reserva.findByIdAndDelete(req.params.id);
+    return res.json('reserva eliminada' + reserva)
+ }
+
+ export async function getReservasForDay(req: Request, res: Response): Promise<Response>{  
+    const reserva = await Reserva.find({dia: req.params.date});
+    return res.json(reserva);
+ }
 
 
 export class Availables {

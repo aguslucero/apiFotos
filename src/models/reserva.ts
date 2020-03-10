@@ -7,7 +7,8 @@ const schema = new Schema({
     apellido: String,
     dia: String,
     hora: String,
-    personas: Number
+    personas: Number,
+    telefono: String
 })
 
  interface Ireserva extends Document {
@@ -15,7 +16,8 @@ const schema = new Schema({
     apellido: string,
     dia: string,
     hora: string,
-    personas: string
+    personas: string,
+    telefono: string
 }
 
 export default model<Ireserva>('reserva', schema);
