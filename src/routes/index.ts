@@ -50,4 +50,7 @@ router.route('/fotos/:id')
   router.route('/reserva/getWorkableDays').get(reservaController.getWorkableDays)
   router.route('/reserva/tablesFoyDay/:date').get(reservaController.getTablesFoyDay)
   router.route('/reserva/createReserva').post(reservaController.createReserva)
+  router.route('/reserva/deleteReserva').delete(reservaController.deleteReserva)
+  router.route('/reserva/getReservaForDay').post(reservaController.getReservasForDay)
+
 export default router
