@@ -15,7 +15,7 @@ var mailOptions = {
     from: 'Remitente',
     to: req.body.email,
     subject: 'Pedido listo',
-    text: 'Hola '+ req.body.name + ' Su pedido (' + req.body.title + ') ya se encuentra disponible para ser retirado!'
+    text: 'Hola '+ req.body.name + '! le informamos que su pedido (' + req.body.title + ') ya se encuentra disponible para ser retirado!'
 };
 // Enviamos el email
 transporter.sendMail(mailOptions, function(error, info){
