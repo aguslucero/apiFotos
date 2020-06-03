@@ -6,7 +6,7 @@ export async function sendEmail(req: Request, res: Response): Promise<Response>{
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'IAM.notificaciones@gmail.com',
+            user: 'iam.notificaciones@gmail.com',
             pass: 'agus40188225'
         }
     });

@@ -44,9 +44,13 @@ export async function deleteMenu(req: Request, res: Response): Promise<Response>
 
 export async function actualizarMenu(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
-    const { title } = req.body;
+    const { title, price, description } = req.body;
     const menu = await Menu.findByIdAndUpdate(id, {
-        title
+        title,
+        price,
+        description,
+        imagePath: req.file.path
+        
     },{new: true});
     return res.json({
         message: 'menu actualizado',

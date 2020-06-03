@@ -19,12 +19,12 @@ router.route('/fotos/:id')
 
  router.route('/menus')
     .get(menuController.getMenus)
-   .post(multer2.single('image'), menuController.crearMenu) 
+    .post(multer2.single('image'), menuController.crearMenu) 
 
  router.route('/menus/:id')
   .get(menuController.getMenu)
   .delete(menuController.deleteMenu)
-  .put(menuController.actualizarMenu)
+  .put(multer2.single('image'), menuController.actualizarMenu)
 
   //auth
   router.route('/auth/register').post(authController.createAdmin)
