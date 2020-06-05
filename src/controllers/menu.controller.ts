@@ -28,7 +28,7 @@ return res.json(menus);
 export async function getMenu(req: Request, res: Response): Promise<Response> {
 const menu = await Menu.findById(req.params.id);
     return res.json(menu );
-}
+}   
 
 export async function deleteMenu(req: Request, res: Response): Promise<Response> {
    const menu =  await Menu.findByIdAndDelete(req.params.id);
@@ -45,11 +45,16 @@ export async function deleteMenu(req: Request, res: Response): Promise<Response>
 export async function actualizarMenu(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const { title, price, description } = req.body;
+    const menuActual = await Menu.findById(id);
+    let image = menuActual.imagePath;
+    if ( req.file){ 
+     image = req.file.path
+    }
     const menu = await Menu.findByIdAndUpdate(id, {
         title,
         price,
         description,
-        imagePath: req.file.path
+        imagePath: image
         
     },{new: true});
     return res.json({
