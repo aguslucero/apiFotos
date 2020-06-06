@@ -1,6 +1,15 @@
 import {Schema, model, Document} from 'mongoose';
 
 
+const Menuschema = new Schema({
+    title:String,
+    imagePath: String,
+    description: String,
+    price: Number,
+    cant: Number
+
+      
+})
 
 const schema = new Schema({
     name:String,
@@ -8,10 +17,10 @@ const schema = new Schema({
     price: String,
     hour: String,
     phone: String,
-    title: String,
-    description: String,
     state: String,
-    email: String
+    email: String,
+    menus: [Menuschema],
+
     
 })
 
@@ -21,10 +30,17 @@ const schema = new Schema({
     price: string,
     hour: string,
     phone: string,
-    title: string,
-    description: string,
     state: string
     email: string;
+    menus: Menus[];
 }
 
 export default model<Ipedido>('pedidos', schema);
+
+export class Menus { 
+    title:String;
+    imagePath: String;
+    description: String;
+    price: Number;
+    cant: Number
+}

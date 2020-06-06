@@ -15,9 +15,10 @@ export async function crearReserva(req: Request, res: Response) {
 
 export async function newPedido(req: Request, res: Response) { 
  const pedido = new Pedido(req.body.pedido);
+ pedido.menus = req.body.pedido.menus;
  pedido.save();
  return res.json(pedido);
- 
+    
 }
 
 export async function getPedidos(req: Request, res: Response): Promise<Response>{
